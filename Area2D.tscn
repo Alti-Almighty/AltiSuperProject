@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://MainCharMovement.gd" type="Script" id=1]
+[ext_resource path="res://code/MainCharMovement.gd" type="Script" id=1]
 [ext_resource path="res://assets/Screenshot from 2022-01-20 19-44-34.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=3]
