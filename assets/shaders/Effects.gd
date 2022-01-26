@@ -1,5 +1,11 @@
 extends CanvasLayer
 
+###################################################
+# Interface: 
+# kaboom() - sample "domain logic" function running some visual effects on shaders
+# restart() - called on restart
+####################################################
+
 func kaboom():
 	$ChromaticAberration.show()
 	$Blur.show()
