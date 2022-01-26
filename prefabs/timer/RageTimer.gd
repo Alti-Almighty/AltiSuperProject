@@ -1,5 +1,14 @@
 extends Node2D
 
+###################################################
+# Interface: 
+# set_speed() - sets speed of the timer,  one of 4 - {SPEED_SLOW, SPEED_NEUTRAL, SPEED_FAST, SPEED_BLAZING}
+# start_timer() - resets rage to max_rage and stars the timer based on speed
+# set_rage(rage) - sets current rage
+# @signal timer_started - you can connect to this event when timer starts
+# @signal timer_kaboom - you can connect to this event when timer reaches 0
+####################################################
+
 var xtraverse = 0
 var rotspeed = 2
 var rotamt = 5

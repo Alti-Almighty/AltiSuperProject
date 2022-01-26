@@ -1,0 +1,218 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/shaders/ChromaticAberration.gd" type="Script" id=1]
+[ext_resource path="res://assets/shaders/Effects.gd" type="Script" id=2]
+[ext_resource path="res://assets/shaders/Blur.gd" type="Script" id=3]
+[ext_resource path="res://assets/shaders/Wiper.gd" type="Script" id=4]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float offset = 1f;
+
+void fragment() {
+	vec4 green_channel = texture(SCREEN_TEXTURE, SCREEN_UV);
+	vec4 red_channel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + (offset * SCREEN_PIXEL_SIZE.x), SCREEN_UV.y));
+	vec4 blue_channel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - (offset * SCREEN_PIXEL_SIZE.x), SCREEN_UV.y));
+	COLOR = vec4(red_channel.r, green_channel.g, blue_channel.b, 1f);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/offset = 0.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "Kaboom"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ChromaticAberration:material:shader_param/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 7.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ChromaticAberration:material:shader_param/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform vec2 center = vec2(0.5);
+uniform float intensivity: hint_range(0f, 1f);
+
+void fragment() {	
+	COLOR.rbg = textureLod(SCREEN_TEXTURE, SCREEN_UV, 6f * intensivity * (distance(center, UV) / sqrt(2))).rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/intensivity = 0.2
+
+[sub_resource type="Animation" id=7]
+resource_name = "Kaboom"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/intensivity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/intensivity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.2 ]
+}
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform vec2 target = vec2(0.5f);
+uniform float intensity: hint_range(0f, 1f);
+uniform vec4 color : hint_color;
+
+void fragment(){
+	vec2 resolution = 1f / SCREEN_PIXEL_SIZE;
+	    
+	vec2 current_pixel = SCREEN_UV * resolution;
+	vec2 target_pixel = vec2(target.x, 1f - target.y) * resolution;
+	float dist = distance(current_pixel, target_pixel);
+	
+	float radius = intensity * length(resolution);
+	
+	COLOR = color;
+	COLOR.a = clamp(1f + dist - radius, 0f, 1f);
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/target = Vector2( 0.5, 0.5 )
+shader_param/intensity = 1.0
+shader_param/color = null
+
+[sub_resource type="Animation" id=11]
+resource_name = "Kaboom"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Restart"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="Effects" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ChromaticAberration" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChromaticAberration"]
+root_node = NodePath("../..")
+anims/Kaboom = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Blur" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Blur"]
+anims/Kaboom = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[node name="Wiper" type="ColorRect" parent="."]
+material = SubResource( 10 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Wiper"]
+anims/Kaboom = SubResource( 11 )
+anims/RESET = SubResource( 12 )
+anims/Restart = SubResource( 13 )
