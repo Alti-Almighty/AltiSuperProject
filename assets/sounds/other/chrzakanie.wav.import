@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chrzakanie.wav-9fea3d66db18c54d8d1615ad20af55a2.sample"
+
+[deps]
+
+source_file="res://assets/sounds/other/chrzakanie.wav"
+dest_files=[ "res://.import/chrzakanie.wav-9fea3d66db18c54d8d1615ad20af55a2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

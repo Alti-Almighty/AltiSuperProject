@@ -6,11 +6,17 @@ extends Node2D
 # playWar() - just plays war music
 # fadeToWar() - smoothly fades from current to war
 # fadeToChill() - smoothly fades from current to chill
+# getVoiceSound() - gets a preloaded voice sound
 ##################################
 
 var _music = []
+var _player_voices = []
+
 var music_player = null
+
 enum {CHILL_MUSIC, FIGHT_MUSIC}
+enum {PLAYER_COUGH}
+
 export(int) var music_volume = 0
 onready var tween_out = get_node("GlobalMixerTweenOut")
 onready var tween_in = get_node("GlobalMixerTweenIn")
@@ -19,13 +25,22 @@ export var between_music_transition_duration = 1.00
 export var between_music_transition_type = 1 # TRANS_SINE
 
 func _ready():
-	loadSounds()
+	_loadSounds()
+	_loadVoices()
 
-func loadSounds():
+func _loadSounds():
 	# Add loader here
 	_music.append(load("res://assets/sounds/music/chill.mp3"))
 	_music.append(load("res://assets/sounds/music/fight.mp3"))
 	
+func _loadVoices():
+	# Add loader here
+	_player_voices.append(load("res://assets/sounds/other/chrzakanie.wav"))
+	
+#Gets voice sound
+func getVoiceSound(voiceIndex):
+	return _player_voices[voiceIndex]
+		
 func playChill():
 	$GlobalMixer.stream = _music[CHILL_MUSIC]
 	$GlobalMixer.play()
@@ -39,14 +54,14 @@ func playWar():
 ####
 #smoothly translates between the tweens
 func fadeToWar():
-	fade_out_to(FIGHT_MUSIC)
+	_fade_out_to(FIGHT_MUSIC)
 	
 func fadeToChill():
-	fade_out_to(CHILL_MUSIC)
+	_fade_out_to(CHILL_MUSIC)
 
 var __nextMusicToPlay = null;
 
-func fade_out_to(newMusic):
+func _fade_out_to(newMusic):
 	# tween music volume down to 0
 	__nextMusicToPlay = newMusic;
 	tween_out.interpolate_property($GlobalMixer, "volume_db", music_volume, -80, between_music_transition_duration, between_music_transition_type, Tween.EASE_IN, 0)	
