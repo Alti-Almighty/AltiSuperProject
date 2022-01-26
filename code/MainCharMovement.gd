@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-export (int) var speed = 400
+export (int) var speed = 200
+export (int) var boost = 300
 
 var velocity = Vector2()
 
@@ -14,13 +15,11 @@ func get_input():
 		velocity.y += 1
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
-	velocity = velocity.normalized() * speed
+	if Input.is_action_pressed("Boost"):   #we can also use booster logic here
+		velocity = velocity.normalized() * (speed + boost) 
+	else:
+		velocity = velocity.normalized() * speed 
 
 func _physics_process(delta):
 	get_input()
 	velocity = move_and_slide(velocity)
-
-
-func _on_Area2D_body_entered(body):
-	get_node("../Area2D/Label2").show()
-	get_node("../Area2D/Label").hide()
