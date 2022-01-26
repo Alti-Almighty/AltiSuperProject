@@ -44,7 +44,19 @@ Sample use :
 	
 func _on_RageTimer_timer_kaboom():
 	print("kaboom !")
+```
 
+## Effects
 
+Added Effects abstraction layer serving as a facade for multiple shaders. 
 
+Method  | Comment
+------------- | -------------
+kaboom() | sample "domain logic" function running some visual effects on shaders
+restart() | called on restart
+
+Sample use : 
+```python
+	func _on_RageTimer_timer_kaboom():
+	$EffectsController.kaboom()
 ```
