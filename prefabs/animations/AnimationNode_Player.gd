@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export(int) var speed = 80
+onready var state_machine = $AnimationTree.get("parameters/playback")
 
 func _physics_process(delta):
 	var motion = Vector2() 
@@ -17,9 +18,9 @@ func _physics_process(delta):
 	motion = motion.normalized()
 	
 	if motion == Vector2.ZERO:
-		$AnimationTree.get("parameters/playback").travel("Idle")
+		state_machine.travel("Idle")
 	else:
-		$AnimationTree.get("parameters/playback").travel("Walkin")
+		state_machine.travel("Walkin")
 		$AnimationTree["parameters/Walkin/blend_position"] = motion
 
 	motion = move_and_slide(motion * speed)
