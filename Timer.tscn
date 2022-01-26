@@ -1,10 +1,22 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Timer" type="Timer"]
+[ext_resource path="res://TempRageLabel.gd" type="Script" id=1]
 
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="Timer" type="Node2D"]
+
+[node name="TempRageLabel" type="Label" parent="."]
+visible = false
+margin_left = 451.0
+margin_top = 31.0
+margin_right = 570.0
+margin_bottom = 59.0
+text = "Rage Mode Started"
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="TempRageLabel" method="_on_Node2D_timeout"]
