@@ -7,6 +7,8 @@
 [ext_resource path="res://MainScene.gd" type="Script" id=5]
 
 [sub_resource type="Environment" id=1]
+glow_enabled = true
+glow_intensity = 0.62
 
 [node name="MainScene" type="Node2D"]
 position = Vector2( -1518, -334 )

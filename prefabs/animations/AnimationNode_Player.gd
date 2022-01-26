@@ -20,17 +20,23 @@ func handle_movement():
 	var motion = Vector2() 
 	
 	if Input.is_action_pressed("ui_left"):
-		motion.x -= 1
-		play_sound(SoundMixer.PLAYER_RUN)		
+		if Input.is_action_just_pressed("ui_left"):
+			play_sound(SoundMixer.PLAYER_RUN)			
+		motion.x -= 1		
 	if Input.is_action_pressed("ui_right"):
-		play_sound(SoundMixer.PLAYER_WALK)		
+		if Input.is_action_just_pressed("ui_right"):		
+			play_sound(SoundMixer.PLAYER_WALK)		
 		motion.x += 1
 	if Input.is_action_pressed("ui_up"):
-		motion.y -= 1
-		play_sound(SoundMixer.PLAYER_SHUFFLE)		
+		if Input.is_action_just_pressed("ui_up"):		
+			play_sound(SoundMixer.PLAYER_SHUFFLE)		
+		motion.y -= 1		
 	if Input.is_action_pressed("ui_down"):
-		motion.y += 1
-		play_sound(SoundMixer.PLAYER_SPRAY)		
+		if Input.is_action_just_pressed("ui_down"):		
+			play_sound(SoundMixer.PLAYER_SPRAY)		
+		motion.y += 1		
+		
+		
 			
 	motion = motion.normalized()
 	
@@ -45,3 +51,6 @@ func handle_movement():
 func play_sound(index):
 	$PlayerMixer.stream = SoundMixer.getVoiceSound(index)
 	$PlayerMixer.play()
+	
+func stop_sound():
+	$PlayerMixer.stop()
