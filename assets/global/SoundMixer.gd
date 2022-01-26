@@ -15,7 +15,7 @@ var _player_voices = []
 var music_player = null
 
 enum {CHILL_MUSIC, FIGHT_MUSIC}
-enum {PLAYER_COUGH}
+enum {PLAYER_COUGH, PLAYER_RUN, PLAYER_WALK, PLAYER_SPRAY, PLAYER_SHUFFLE}
 
 export(int) var music_volume = 0
 onready var tween_out = get_node("GlobalMixerTweenOut")
@@ -36,6 +36,10 @@ func _loadSounds():
 func _loadVoices():
 	# Add loader here
 	_player_voices.append(load("res://assets/sounds/other/chrzakanie.wav"))
+	_player_voices.append(load("res://assets/sounds/other/bieg.wav"))
+	_player_voices.append(load("res://assets/sounds/other/chod.wav"))
+	_player_voices.append(load("res://assets/sounds/other/psikniecie.wav"))
+	_player_voices.append(load("res://assets/sounds/other/szuranie.wav"))
 	
 #Gets voice sound
 func getVoiceSound(voiceIndex):

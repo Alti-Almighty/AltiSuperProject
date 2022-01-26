@@ -4,7 +4,7 @@ export(int) var speed = 80
 onready var state_machine = $AnimationTree.get("parameters/playback")
 
 func _physics_process(delta):
-	handleMovement()
+	handle_movement()
 	
 	# fun with sounds
 	if Input.is_action_pressed("ui_page_down"):
@@ -16,17 +16,21 @@ func _physics_process(delta):
 		$PlayerMixer.play()
 		
 	
-func handleMovement():
+func handle_movement():
 	var motion = Vector2() 
 	
 	if Input.is_action_pressed("ui_left"):
 		motion.x -= 1
+		play_sound(SoundMixer.PLAYER_RUN)		
 	if Input.is_action_pressed("ui_right"):
+		play_sound(SoundMixer.PLAYER_WALK)		
 		motion.x += 1
 	if Input.is_action_pressed("ui_up"):
 		motion.y -= 1
+		play_sound(SoundMixer.PLAYER_SHUFFLE)		
 	if Input.is_action_pressed("ui_down"):
 		motion.y += 1
+		play_sound(SoundMixer.PLAYER_SPRAY)		
 			
 	motion = motion.normalized()
 	
@@ -37,3 +41,7 @@ func handleMovement():
 		$AnimationTree["parameters/Walkin/blend_position"] = motion
 
 	motion = move_and_slide(motion * speed)
+
+func play_sound(index):
+	$PlayerMixer.stream = SoundMixer.getVoiceSound(index)
+	$PlayerMixer.play()

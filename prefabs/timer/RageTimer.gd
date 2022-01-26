@@ -8,10 +8,19 @@ var scaletraverse = 0
 var scalespeed = 0.8
 var scaleamt = 0.4
 
+enum {SPEED_SLOW, SPEED_NEUTRAL, SPEED_FAST, SPEED_BLAZING}
+
 var _current_timer = null
 var _is_running = false
 var _current_rage = 0
+
 export(int) var max_rage = 100
+export(float) var speed_slow = 1.5
+export(float) var speed_neutral = 1
+export(float) var speed_fast = 0.2
+export(float) var speed_blazing = 0.05
+
+var _timer_speed = speed_neutral
 
 signal timer_started
 signal timer_kaboom
@@ -21,16 +30,29 @@ func _ready():
 	add_child(_current_timer)
 	_current_timer.connect("timeout", self, "_on_Timer_tick")
 
+func set_speed(speed):
+	# yeah yeah...
+	if speed == SPEED_SLOW:
+		_timer_speed = speed_slow
+	elif speed == SPEED_NEUTRAL:
+		_timer_speed = speed_neutral
+	elif speed == SPEED_FAST:
+		_timer_speed= speed_fast
+	elif speed == SPEED_BLAZING:
+		_timer_speed= speed_blazing		
+	
 func set_rage(rage):	
 	_current_rage = min(rage, max_rage)
 	$TimerUI.set_rage(_current_rage)
 
-func startTimer():
+func start_timer():
 	# reset timer	
 	_is_running = true
 	set_rage(max_rage)
-	
-	_current_timer.set_wait_time(1.0)
+
+	print(_timer_speed)
+
+	_current_timer.set_wait_time(_timer_speed)	
 	_current_timer.set_one_shot(false)
 	_current_timer.start()
 	
