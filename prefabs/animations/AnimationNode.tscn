@@ -211,3 +211,5 @@ anims/idle = SubResource( 3 )
 anims/left = SubResource( 6 )
 anims/right = SubResource( 7 )
 anims/top = SubResource( 4 )
+
+[node name="PlayerMixer" type="AudioStreamPlayer2D" parent="Playa"]

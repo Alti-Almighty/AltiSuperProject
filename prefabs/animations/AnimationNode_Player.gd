@@ -11,6 +11,10 @@ func _physics_process(delta):
 		SoundMixer.fadeToWar()
 	if Input.is_action_pressed("ui_page_up"):
 		SoundMixer.fadeToChill()		
+	if Input.is_action_pressed("ui_home"):		
+		$PlayerMixer.stream = SoundMixer.getVoiceSound(SoundMixer.PLAYER_COUGH)
+		$PlayerMixer.play()
+		
 	
 func handleMovement():
 	var motion = Vector2() 
