@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://prefabs/timer/RageTimer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefabs/HUD/HealthBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefabs/HUD/HUD.gd" type="Script" id=3]
 
 [node name="Interface" type="CanvasLayer"]
+script = ExtResource( 3 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchor_left = 0.5
@@ -19,3 +22,11 @@ __meta__ = {
 [node name="RageTimer" parent="NinePatchRect" instance=ExtResource( 1 )]
 position = Vector2( -189.466, 13.2984 )
 scale = Vector2( 0.564643, 0.550583 )
+
+[node name="Willpower" parent="NinePatchRect" instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 194.356
+margin_top = -5.31937
+margin_right = 234.356
+margin_bottom = 34.6806
