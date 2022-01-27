@@ -49,3 +49,5 @@ func shoot():
 	owner.add_child(projectile_instance)
 	var projectile_spawn_position = self.transform
 	projectile_instance.transform = projectile_spawn_position
+	
+	$Camera2D.shake(0.2,15,8)
