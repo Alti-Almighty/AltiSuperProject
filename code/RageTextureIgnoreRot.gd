@@ -17,3 +17,5 @@ func _process(delta):
 	camera_position.x -= get_viewport_rect().size.x/2
 	camera_position.y -= get_viewport_rect().size.y/2
 	self.set_position(camera_position)
+	var viewport_size = get_viewport().size
+	self.set_size( Vector2(viewport_size.x, viewport_size.y) )
