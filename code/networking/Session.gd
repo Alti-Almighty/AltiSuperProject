@@ -3,6 +3,7 @@ extends Node
 
 var player_ids = []
 var players = []
+var is_multi = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,7 @@ func spawn_players():
 	if get_tree().get_root().get_node("Game") == null:
 		return
 
+	is_multi = true
 	# Spawn host
 	var host = preload("res://Player.tscn").instance()
 	var hostId = get_tree().get_network_unique_id()

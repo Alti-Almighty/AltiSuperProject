@@ -23,6 +23,7 @@ func get_input():
 func _physics_process(delta):
 	# Process input only if we are network master of this player
 
-	get_input()
-	velocity = move_and_slide(velocity)
-	get_parent().updateNetworkPosition(position)
+	if not Session.is_multi or is_network_master():
+		get_input()
+		velocity = move_and_slide(velocity)
+		get_parent().updateNetworkPosition(position)
