@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/kaszel.wav-375562ea2ceaa85f1c51467209d80223.sample"
+
+[deps]
+
+source_file="res://assets/sounds/other/kaszel.wav"
+dest_files=[ "res://.import/kaszel.wav-375562ea2ceaa85f1c51467209d80223.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

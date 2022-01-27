@@ -27,3 +27,12 @@ func _physics_process(delta):
 		get_input()
 		velocity = move_and_slide(velocity)
 		get_parent().updateNetworkPosition(position)
+		
+		var look_at_vec2 = get_viewport().get_mouse_position()
+		look_at(look_at_vec2)
+
+func _input(event):
+	if event is InputEventMouseButton:   #position we need for projectile to travel
+		print("Mouse Click/Unclick at: ", event.position)
+	elif event is InputEventMouseMotion:    #position we need for ratating character towards aim
+		print("Mouse Motion at: ", get_viewport().get_mouse_position() )
