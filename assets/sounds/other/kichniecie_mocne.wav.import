@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/kichniecie_mocne.wav-8436dc9d76199904deb1d2cf263acaf6.sample"
+
+[deps]
+
+source_file="res://assets/sounds/other/kichniecie_mocne.wav"
+dest_files=[ "res://.import/kichniecie_mocne.wav-8436dc9d76199904deb1d2cf263acaf6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

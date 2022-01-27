@@ -32,6 +32,5 @@ scale = Vector2( 0.994607, 1.0082 )
 position = Vector2( 1733, 323 )
 
 [node name="EffectsController" parent="." instance=ExtResource( 6 )]
-enabled = false
 
 [connection signal="timer_kaboom" from="RageTimer" to="." method="_on_RageTimer_timer_kaboom"]
