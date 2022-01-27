@@ -4,6 +4,10 @@ export (int) var speed = 200
 export (int) var boost = 300
 
 var velocity = Vector2()
+var gunpoint = load("res://assets/textures/player/gunpoint.png")
+
+func _ready():
+	Input.set_custom_mouse_cursor(gunpoint)
 
 func get_input():
 	velocity = Vector2()
