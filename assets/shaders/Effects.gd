@@ -13,6 +13,7 @@ func kaboom():
 	$ChromaticAberration.pulse()
 	$Blur.pulse()
 	$Wiper.pulse_out()
+	#$WiperTexture.pulse_out()
 
 func restart():
 	$Wiper.pulse_in()

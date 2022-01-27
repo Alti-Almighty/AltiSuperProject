@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/shaders/ChromaticAberration.gd" type="Script" id=1]
 [ext_resource path="res://assets/shaders/Effects.gd" type="Script" id=2]
 [ext_resource path="res://assets/shaders/Blur.gd" type="Script" id=3]
 [ext_resource path="res://assets/shaders/Wiper.gd" type="Script" id=4]
+[ext_resource path="res://assets/textures/background/back.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/shaders/SpriteWiper.gd" type="Script" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -171,6 +173,80 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
+[sub_resource type="Shader" id=17]
+code = "shader_type canvas_item;
+
+uniform vec2 target = vec2(0.5f);
+uniform float intensity: hint_range(0f, 1f);
+uniform vec4 color : hint_color;
+
+void fragment(){
+	vec2 resolution = 1f / TEXTURE_PIXEL_SIZE;	    
+	
+	vec4 texture_color = texture(TEXTURE, UV);
+			
+	vec2 current_pixel = UV * resolution;
+	vec2 target_pixel = vec2(target.x, 1f - target.y) * resolution;
+	float dist = distance(current_pixel, target_pixel);
+	
+	float radius = intensity * length(resolution);
+	
+	COLOR = texture_color;
+	COLOR.a = clamp(1f + dist - radius, 0f, 1f);
+}"
+
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 17 )
+shader_param/target = Vector2( 0.5, 0.5 )
+shader_param/intensity = 1.0
+shader_param/color = null
+
+[sub_resource type="Animation" id=19]
+resource_name = "Kaboom"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "Reset"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
 [node name="Effects" type="CanvasLayer"]
 script = ExtResource( 2 )
 
@@ -216,3 +292,15 @@ __meta__ = {
 anims/Kaboom = SubResource( 11 )
 anims/RESET = SubResource( 12 )
 anims/Restart = SubResource( 13 )
+
+[node name="WiperTexture" type="Sprite" parent="."]
+visible = false
+material = SubResource( 18 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WiperTexture"]
+anims/Kaboom = SubResource( 19 )
+anims/RESET = SubResource( 20 )
+anims/Reset = SubResource( 21 )

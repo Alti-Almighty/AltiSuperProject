@@ -37,7 +37,6 @@ func handle_movement():
 		motion.y += 1		
 		
 		
-			
 	motion = motion.normalized()
 	
 	if motion == Vector2.ZERO:
@@ -47,6 +46,9 @@ func handle_movement():
 		$AnimationTree["parameters/Walkin/blend_position"] = motion
 
 	motion = move_and_slide(motion * speed)
+	
+	var x = get_global_transform_with_canvas()
+	print(x.origin)
 
 func play_sound(index):
 	$PlayerMixer.stream = SoundMixer.getVoiceSound(index)
