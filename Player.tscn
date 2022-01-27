@@ -30,3 +30,7 @@ position = Vector2( 43, 0 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+current = true
+process_mode = 0
