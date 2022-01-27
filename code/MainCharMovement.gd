@@ -33,10 +33,8 @@ func _physics_process(delta):
 	if not Session.is_multi or is_network_master():
 		get_input()
 		velocity = move_and_slide(velocity)
-		get_parent().updateNetworkPosition(position)
-		
-		var look_at_vec2 = get_viewport().get_mouse_position()
-		look_at(look_at_vec2)
+		get_parent().updateNetworkPosition(position)				
+		look_at(get_global_mouse_position())
 
 func _input(event):
 	if event is InputEventMouseButton:   #position we need for projectile to travel
