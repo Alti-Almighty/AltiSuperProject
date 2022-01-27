@@ -53,3 +53,7 @@ func play_sound(index):
 	
 func stop_sound():
 	$PlayerMixer.stop()
+
+func die():
+	$PlayerMixer.stream = SoundMixer.getVoiceSound(SoundMixer.PLAYER_DEATH)
+	$PlayerMixer.play()
