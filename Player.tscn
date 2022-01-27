@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://code/MainCharMovement.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://code/networking/PlayerReplication.gd" type="Script" id=3]
+[ext_resource path="res://assets/textures/player/temp_projectile.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -21,3 +22,11 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 material = SubResource( 2 )
 texture = ExtResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="KinematicBody2D"]
+position = Vector2( 43, 0 )
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D/Position2D"]
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )

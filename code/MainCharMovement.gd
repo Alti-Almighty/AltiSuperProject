@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+const Projectile = preload("res://Projectile.tscn")
 export (int) var speed = 200
 export (int) var boost = 300
 
@@ -22,7 +23,9 @@ func get_input():
 	if Input.is_action_pressed("Boost"):   #we can also use booster logic here
 		velocity = velocity.normalized() * (speed + boost) 
 	else:
-		velocity = velocity.normalized() * speed 
+		velocity = velocity.normalized() * speed
+	if Input.is_action_just_pressed("Shoot"):
+		shoot()
 
 func _physics_process(delta):
 	# Process input only if we are network master of this player
@@ -37,6 +40,14 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventMouseButton:   #position we need for projectile to travel
-		print("Mouse Click/Unclick at: ", event.position)
+		pass
+		#print("Mouse Click/Unclick at: ", event.position)
 	elif event is InputEventMouseMotion:    #position we need for ratating character towards aim
-		print("Mouse Motion at: ", get_viewport().get_mouse_position() )
+		pass
+		#print("Mouse Motion at: ", get_viewport().get_mouse_position() )
+
+func shoot():
+	var projectile_instance = Projectile.instance()
+	owner.add_child(projectile_instance)
+	var projectile_spawn_position = self.transform
+	projectile_instance.transform = projectile_spawn_position

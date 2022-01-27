@@ -25,12 +25,13 @@ position = Vector2( 1773, 501 )
 position = Vector2( 1774, 560 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1952, 572 )
+position = Vector2( 1940, 550 )
 scale = Vector2( 0.994607, 1.0082 )
 
 [node name="RageTimer" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1733, 323 )
+position = Vector2( 1755, 339 )
 
 [node name="EffectsController" parent="." instance=ExtResource( 6 )]
+enabled = false
 
 [connection signal="timer_kaboom" from="RageTimer" to="." method="_on_RageTimer_timer_kaboom"]
