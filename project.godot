@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SoundMixer="*res://assets/global/SoundMixer.tscn"
+Session="*res://code/networking/Session.gd"
 
 [input]
 

@@ -26,6 +26,7 @@ position = Vector2( 1774, 560 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1952, 572 )
+scale = Vector2( 0.994607, 1.0082 )
 
 [node name="RageTimer" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1733, 323 )

@@ -21,5 +21,11 @@ func get_input():
 		velocity = velocity.normalized() * speed 
 
 func _physics_process(delta):
+	# Process input only if we are network master of this player
+	if is_network_master() == false:
+		return
+
+	print("Moving " + str(get_tree().get_network_unique_id()))
 	get_input()
 	velocity = move_and_slide(velocity)
+	get_parent().updateNetworkPosition(position)
