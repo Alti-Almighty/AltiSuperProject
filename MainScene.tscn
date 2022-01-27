@@ -43,4 +43,6 @@ scale = Vector2( 0.994607, 0.994437 )
 [node name="EffectsController" parent="." instance=ExtResource( 6 )]
 enabled = false
 
-[node name="HUD" parent="." instance=ExtResource( 1 )]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource( 1 )]

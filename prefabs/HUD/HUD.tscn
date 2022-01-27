@@ -17,5 +17,5 @@ __meta__ = {
 }
 
 [node name="RageTimer" parent="NinePatchRect" instance=ExtResource( 1 )]
-position = Vector2( -226, 12 )
+position = Vector2( -189.466, 13.2984 )
 scale = Vector2( 0.564643, 0.550583 )

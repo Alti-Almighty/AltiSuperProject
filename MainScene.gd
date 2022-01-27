@@ -10,3 +10,4 @@ func _ready():
 func _on_RageTimer_timer_kaboom():
 	$EffectsController.kaboom()
 	$AnimationNode/Playa.die()
+

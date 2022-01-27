@@ -131,3 +131,9 @@ texture = ExtResource( 4 )
 current = true
 process_mode = 0
 script = ExtResource( 7 )
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="PlayerMixer" type="AudioStreamPlayer2D" parent="Sound"]
+
+[node name="ShootingMixer" type="AudioStreamPlayer2D" parent="Sound"]
