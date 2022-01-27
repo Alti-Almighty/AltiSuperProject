@@ -9,4 +9,5 @@ func _ready():
 	pass # Replace with function body.
 
 func updateNetworkPosition(pos):
-	rpc_unreliable("setPosition", pos)
+	if is_network_master():
+		rpc_unreliable("setPosition", pos)

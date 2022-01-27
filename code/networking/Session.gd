@@ -10,6 +10,9 @@ func _ready():
 
 
 func spawn_players():
+	if get_tree().get_root().get_node("Game") == null:
+		return
+
 	# Spawn host
 	var host = preload("res://Player.tscn").instance()
 	var hostId = get_tree().get_network_unique_id()
