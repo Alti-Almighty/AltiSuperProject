@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://prefabs/HUD/HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Timer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://prefabs/timer/RageTimer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MainScene.gd" type="Script" id=5]
 [ext_resource path="res://assets/shaders/ChromaticAberration.tscn" type="PackedScene" id=6]
 
@@ -43,11 +43,4 @@ scale = Vector2( 0.994607, 0.994437 )
 [node name="EffectsController" parent="." instance=ExtResource( 6 )]
 enabled = false
 
-[node name="RageTimer" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1755, 339 )
-speed_slow = 5.0
-speed_neutral = 3.0
-speed_fast = 0.6
-speed_blazing = 0.2
-
-[connection signal="timer_kaboom" from="RageTimer" to="." method="_on_RageTimer_timer_kaboom"]
+[node name="HUD" parent="." instance=ExtResource( 1 )]

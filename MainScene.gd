@@ -2,8 +2,8 @@ extends Node2D
 
 func _ready():
 	Session.spawn_players()
-	$RageTimer.set_speed($RageTimer.SPEED_BLAZING)
-	$RageTimer.start_timer()	
+	#$RageTimer.set_speed($RageTimer.SPEED_BLAZING)
+	#$RageTimer.start_timer()	
 	$EffectsController.restart()
 
 
