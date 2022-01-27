@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://prefabs/timer/RageTimerTheme.tres" type="Theme" id=1]
 [ext_resource path="res://prefabs/timer/RageTimer.gd" type="Script" id=2]
 [ext_resource path="res://prefabs/timer/TimerUI.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/FugazOne-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 62
+outline_size = 11
+extra_spacing_char = 4
+font_data = ExtResource( 4 )
 
 [node name="RageTimer" type="Node2D"]
 script = ExtResource( 2 )
@@ -16,13 +23,23 @@ __meta__ = {
 }
 
 [node name="ProgressBar" type="ProgressBar" parent="TimerUI"]
-margin_left = 1.0
-margin_top = 2.0
-margin_right = 510.0
-margin_bottom = 78.0
+margin_left = 2.0
+margin_top = 90.0
+margin_right = 511.0
+margin_bottom = 166.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 value = 100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="TimerUI"]
+margin_left = 160.0
+margin_right = 331.0
+margin_bottom = 92.0
+custom_colors/font_color = Color( 1, 0.133333, 0.133333, 1 )
+custom_colors/font_outline_modulate = Color( 0.709804, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "RAGE"

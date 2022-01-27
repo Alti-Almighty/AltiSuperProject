@@ -7,26 +7,27 @@
 [node name="Interface" type="CanvasLayer"]
 script = ExtResource( 3 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = 1.0
-margin_top = 34.0
-margin_right = 1.0
-margin_bottom = 634.0
-rect_scale = Vector2( 0.818087, 0.751969 )
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RageTimer" parent="NinePatchRect" instance=ExtResource( 1 )]
-position = Vector2( -189.466, 13.2984 )
-scale = Vector2( 0.564643, 0.550583 )
+[node name="RageTimer" parent="HBoxContainer" instance=ExtResource( 1 )]
+position = Vector2( -244, 7 )
+scale = Vector2( 0.461927, 0.414021 )
 
-[node name="Willpower" parent="NinePatchRect" instance=ExtResource( 2 )]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = 194.356
-margin_top = -5.31937
-margin_right = 234.356
-margin_bottom = 34.6806
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" parent="HBoxContainer2" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_bottom = 40.0
