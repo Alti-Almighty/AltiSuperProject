@@ -1,7 +1,11 @@
 extends ColorRect
 
+export(bool) var enabled = true
+
 func pulse_out():	
-	$AnimationPlayer.play("Kaboom")
+	if enabled:
+		$AnimationPlayer.play("Kaboom")
 	
 func pulse_in():		
-	$AnimationPlayer.play("Restart")	
+	if enabled:
+		$AnimationPlayer.play("Restart")	

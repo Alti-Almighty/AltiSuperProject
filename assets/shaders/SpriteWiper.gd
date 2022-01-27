@@ -1,7 +1,11 @@
 extends Sprite
 
+export(bool) var enabled = true
+
 func pulse_out():	
-	$AnimationPlayer.play("Kaboom")
+	if enabled:
+		$AnimationPlayer.play("Kaboom")
 	
 func pulse_in():		
-	$AnimationPlayer.play("Reset")	
+	if enabled:
+		$AnimationPlayer.play("Reset")	

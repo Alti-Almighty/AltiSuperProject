@@ -6,14 +6,31 @@ extends CanvasLayer
 # restart() - called on restart
 ####################################################
 
-func kaboom():
-	$ChromaticAberration.show()
-	$Blur.show()
+export(bool) var enabled = true
+
+func _ready():
+	print(enabled)
+	_toggle_effects()
 	
-	$ChromaticAberration.pulse()
-	$Blur.pulse()
-	$Wiper.pulse_out()
-	#$WiperTexture.pulse_out()
+func deactivate():
+	enabled = false
+	_toggle_effects()
+
+func _toggle_effects():
+	for _i in self.get_children():
+		_i.enabled = enabled
+
+func kaboom():	
+	if enabled:				
+		$ChromaticAberration.show()
+		$Blur.show()
+		
+		$ChromaticAberration.pulse()
+		$Blur.pulse()
+		#$Wiper.pulse_out()
+		$WiperTexture.pulse_out()
 
 func restart():
-	$Wiper.pulse_in()
+	if enabled:				
+		#$Wiper.pulse_in()
+		$WiperTexture.pulse_in()
