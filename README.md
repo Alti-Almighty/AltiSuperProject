@@ -3,12 +3,19 @@
 # Commits 27/01 @PawelBis
 Added lobby system and replicated movement.
 If you want to test this on your local computer:
+## Method 1
 - Change the main scene to "res://scenes/Lobby.tscn" (Project -> Project Settings, tab General, section Application/Run, field Main Scene)
 - Install export templates (Editor -> Manage export templates -> Download and Install)
 - Export the game for your platform (Project -> Export -> Add (your platform) -> Set name and identifier -> Export)
 - Launch one instance of the game and press "Host Lobby"
 - Launch second instance of the game and press "Join Lobby"
 - Enjoy
+
+## Method 2
+- Change the main scene to "res://scenes/Lobby.tscn" (Project -> Project Settings, tab General, section Application/Run, field Main Scene)
+- Launch second instance of the project
+- Press "Play" in both instances
+- Press "Host Lobby" on one first instance, and "Join Lobby" on the second instance
 
 # Commit 26/01 @Jarek
 
