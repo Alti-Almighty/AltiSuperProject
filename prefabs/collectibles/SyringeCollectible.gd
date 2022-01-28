@@ -7,3 +7,7 @@ signal syringe_picked_up(health_change)
 func _on_body_entered(body):
 	emit_signal("syringe_picked_up", health)
 	anim_player.play("fade_out")
+
+
+func _on_SyringeCollectible_body_entered(body):
+	pass # Replace with function body.

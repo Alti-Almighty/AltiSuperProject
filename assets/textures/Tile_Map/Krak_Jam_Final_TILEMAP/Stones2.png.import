@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Stones2.png-208aed4808da22486a2d667a2bebcfe1.stex"
+path="res://.import/Stones2.png-79e128a56b4e291fbcaefa688d6ca2e8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Stones2.png"
-dest_files=[ "res://.import/Stones2.png-208aed4808da22486a2d667a2bebcfe1.stex" ]
+source_file="res://assets/textures/Tile_Map/Krak_Jam_Final_TILEMAP/Stones2.png"
+dest_files=[ "res://.import/Stones2.png-79e128a56b4e291fbcaefa688d6ca2e8.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/water_2.png-ccbcf21c8910907ccec4cb9898bde68f.stex"
+path="res://.import/water_2.png-e4e271d139657e6509f9aab01c802d25.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://water_2.png"
-dest_files=[ "res://.import/water_2.png-ccbcf21c8910907ccec4cb9898bde68f.stex" ]
+source_file="res://assets/textures/Tile_Map/Krak_Jam_Final_TILEMAP/water_2.png"
+dest_files=[ "res://.import/water_2.png-e4e271d139657e6509f9aab01c802d25.stex" ]
 
 [params]
 
