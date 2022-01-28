@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/textures/TileMap/KrakJamTilemap/Stones2.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/background/Stone2.png" type="Texture" id=2]
@@ -98,6 +98,9 @@
 4/shapes = [  ]
 4/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 459.223, 178.544 )
+
 [node name="TileMap" type="TileMap"]
 position = Vector2( 2, 0 )
 tile_set = SubResource( 1 )
@@ -166,10 +169,17 @@ position = Vector2( 378, 1012 )
 texture = ExtResource( 7 )
 
 [node name="Cathedralpng" type="Sprite" parent="."]
-position = Vector2( 368, 109 )
+position = Vector2( 376, 113 )
 rotation = -1.5708
-scale = Vector2( 0.189451, 0.2575 )
+scale = Vector2( 0.189451, 0.378056 )
 texture = ExtResource( 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Cathedralpng"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cathedralpng/StaticBody2D"]
+position = Vector2( -110.847, -48.9346 )
+rotation = 3.41061e-13
+shape = SubResource( 2 )
 
 [node name="Bench2" type="Sprite" parent="."]
 position = Vector2( -100.778, 225.035 )
