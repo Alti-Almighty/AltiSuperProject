@@ -6,7 +6,7 @@ const SyrPowerUp = preload("res://prefabs/collectibles/SyringeCollectible.tscn")
 func _ready():
 	Session.spawn_players()
 	#$RageTimer.set_speed($RageTimer.SPEED_BLAZING)
-	#$RageTimer.start_timer()	
+	#$RageTimer.start_timer()
 	$EffectsController.restart()
 	_play_music()
 	
