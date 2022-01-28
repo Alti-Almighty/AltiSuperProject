@@ -81,6 +81,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 40.0
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
