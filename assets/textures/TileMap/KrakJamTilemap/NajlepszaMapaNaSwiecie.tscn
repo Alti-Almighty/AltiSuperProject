@@ -23,7 +23,7 @@
 [ext_resource path="res://assets/textures/Environment/junk4.png" type="Texture" id=21]
 [ext_resource path="res://assets/textures/Environment/junk2.png" type="Texture" id=22]
 [ext_resource path="res://assets/textures/Environment/junk3.png" type="Texture" id=23]
-[ext_resource path="res://assets/textures/Environment/Court.png" type="Texture" id=24]
+[ext_resource path="res://assets/textures/Environment/playground.png" type="Texture" id=24]
 [ext_resource path="res://assets/textures/Environment/Bicycle.png" type="Texture" id=25]
 
 [sub_resource type="TileSet" id=1]
@@ -183,12 +183,6 @@ rotation = 1.5708
 scale = Vector2( 0.59625, 0.626667 )
 texture = ExtResource( 10 )
 
-[node name="Court" type="Sprite" parent="."]
-position = Vector2( 703, 489.281 )
-rotation = 1.5708
-scale = Vector2( 0.47391, 0.558462 )
-texture = ExtResource( 24 )
-
 [node name="Bench3" type="Sprite" parent="."]
 position = Vector2( 983, 621 )
 scale = Vector2( 0.71875, 0.778333 )
@@ -261,7 +255,13 @@ scale = Vector2( 0.197188, 0.179167 )
 texture = ExtResource( 22 )
 
 [node name="Bicycle" type="Sprite" parent="."]
-position = Vector2( 939.697, 578.387 )
+position = Vector2( 945, 580 )
 rotation = 2.40332
 scale = Vector2( 0.140166, 0.163941 )
 texture = ExtResource( 25 )
+
+[node name="Playground" type="Sprite" parent="."]
+position = Vector2( 705, 484 )
+rotation = 1.5708
+scale = Vector2( 0.485593, 0.550532 )
+texture = ExtResource( 24 )

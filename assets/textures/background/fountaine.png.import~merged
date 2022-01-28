@@ -1,0 +1,53 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+<<<<<<< HEAD
+path="res://.import/fountaine.png-652723971cc18096ff750698ad88eb55.stex"
+=======
+<<<<<<< HEAD:assets/textures/Environment/Bench.png.import
+path="res://.import/Bench.png-5bc8c3c07c8ea2ed4c8a94803aa147b4.stex"
+=======
+path="res://.import/fountaine.png-652723971cc18096ff750698ad88eb55.stex"
+>>>>>>> bd2440a76862f05690f6aadfcf03966bd44f8313:assets/textures/background/fountaine.png.import
+>>>>>>> bd2440a76862f05690f6aadfcf03966bd44f8313
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+<<<<<<< HEAD
+source_file="res://assets/textures/background/fountaine.png"
+dest_files=[ "res://.import/fountaine.png-652723971cc18096ff750698ad88eb55.stex" ]
+=======
+<<<<<<< HEAD:assets/textures/Environment/Bench.png.import
+source_file="res://assets/textures/Environment/Bench.png"
+dest_files=[ "res://.import/Bench.png-5bc8c3c07c8ea2ed4c8a94803aa147b4.stex" ]
+=======
+source_file="res://assets/textures/background/fountaine.png"
+dest_files=[ "res://.import/fountaine.png-652723971cc18096ff750698ad88eb55.stex" ]
+>>>>>>> bd2440a76862f05690f6aadfcf03966bd44f8313:assets/textures/background/fountaine.png.import
+>>>>>>> bd2440a76862f05690f6aadfcf03966bd44f8313
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
