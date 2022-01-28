@@ -45,7 +45,7 @@ func get_input():
 		shoot()
 
 func _physics_process(delta):
-	# Process input only if we are network master of this player
+	# Process input only if we are network master of this player	
 
 	if not Session.is_multi or is_network_master():
 		get_input()
