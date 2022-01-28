@@ -19,6 +19,8 @@ func _ready():
 func _on_Node2D_timeout():
 	if self.is_visible():
 		self.hide()
+		get_node("../../Player/RageTexture").hide()
 	else:
 		self.show()
+		get_node("../../Player/RageTexture").show()
 	var a = get_node("../Timer").start(3)

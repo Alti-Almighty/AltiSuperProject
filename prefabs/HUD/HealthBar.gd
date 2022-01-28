@@ -1,16 +1,13 @@
 extends Control
 
 var xtraverse = 0
-var rotspeed = 3
-var rotamt = 2
+var rotspeed = 3.2
+var rotamt = 1.5
 
 var scaletraverse = 0
-var scalespeed = 0.8
-var scaleamt = 0.1
+var scalespeed = 1
+var scaleamt = 0.2
 
-
-func set_rage(hp):	
-	$ProgressBar.value = hp
 
 func _physics_process(delta):	
 	rect_rotation = sin(xtraverse) * rotamt

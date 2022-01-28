@@ -48,7 +48,7 @@ func set_speed(speed):
 	elif speed == SPEED_FAST:
 		_timer_speed= speed_fast
 	elif speed == SPEED_BLAZING:
-		_timer_speed= speed_blazing		
+		_timer_speed= speed_blazing
 	
 func set_rage(rage):	
 	_current_rage = min(rage, max_rage)

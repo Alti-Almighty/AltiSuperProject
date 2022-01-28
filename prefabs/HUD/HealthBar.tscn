@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/FugazOne-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://prefabs/HUD/HealthBar.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 37
+outline_size = 4
+outline_color = Color( 0.74902, 0.298039, 0.298039, 1 )
+extra_spacing_char = 5
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.396078, 0.733333, 0.490196, 1 )
+border_color = Color( 1, 1, 1, 1 )
+shadow_color = Color( 0.913725, 0.819608, 0.819608, 0.6 )
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+border_color = Color( 0.960784, 0.960784, 0.960784, 1 )
+shadow_color = Color( 0.980392, 0.980392, 0.980392, 0.6 )
+shadow_size = 7
+
+[node name="HealthBar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_top = 2.0
+margin_right = 197.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 1 )
+text = "WIllpower"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="NinePatchRect"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_top = 64.0
+margin_right = 215.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+value = 20.0
