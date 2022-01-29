@@ -22,10 +22,11 @@ func _play_music():
 	SoundMixer.playChill()
 
 func powerup_random_spawn(res: Resource):
-	var ins = res.instance()
 	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var rand_x = rng.randi_range(32, $TileMap.get_used_rect().size.x * $TileMap.cell_size.x * $TileMap.scale.x )
-	var rand_y = rng.randi_range(32, $TileMap.get_used_rect().size.y * $TileMap.cell_size.y * $TileMap.scale.y )
-	ins.transform.origin = Vector2(rand_x, rand_y)
-	add_child(ins)
+	for i in range(8):
+		var ins = res.instance()
+		rng.randomize()
+		var rand_x = rng.randi_range(32, $TileMap.get_used_rect().size.x * $TileMap.cell_size.x * $TileMap.scale.x )
+		var rand_y = rng.randi_range(32, $TileMap.get_used_rect().size.y * $TileMap.cell_size.y * $TileMap.scale.y )
+		ins.transform.origin = Vector2(rand_x, rand_y)
+		add_child(ins)
