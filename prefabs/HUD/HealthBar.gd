@@ -18,3 +18,4 @@ func _physics_process(delta):
 	
 	xtraverse += rotspeed * delta
 	scaletraverse += scalespeed * delta
+

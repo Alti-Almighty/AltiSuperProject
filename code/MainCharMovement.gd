@@ -1,7 +1,7 @@
 extends KinematicBody2D
 const MAX_HEALTH = 100
 const NORMAL_SPEED = 200
-const COVID_SPEED = NORMAL_SPEED*0.65
+const COVID_SPEED = NORMAL_SPEED*0.75
 const Projectile = preload("res://Projectile.tscn")
 export (int) var speed = 200
 export (int) var boost = 300
@@ -104,6 +104,7 @@ func add_health(hp):
 	cure()
 	health = max(MAX_HEALTH, health+hp)
 	_play_sound(SoundMixer.PLAYER_GRUNT,  MIXER_1)
+	get_parent().emit_health_changed()
 	
 func remove_health(hp):
 	health = max(0, health-hp)
@@ -113,6 +114,7 @@ func remove_health(hp):
 		if health == 0:
 			die()
 		_play_sound(SoundMixer.PLAYER_HEAVY_COUGH,  MIXER_1)
+	get_parent().emit_health_changed()
 	
 func die():
 	_play_sound(SoundMixer.PLAYER_DIE,  MIXER_1)

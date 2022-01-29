@@ -1,5 +1,7 @@
 # AltiSuperProject
 # Commit 29/01 @Jakub
+* willpower bar is now connected to HP (via signals, dk how that affects network code?), use add_health and remove_health
+# Commit 29/01 @Jakub
 * Pickups are now altering hp (will power bar not yet changed) and illness state (makes you walk slow)
 * Added sound to pickups and death
 * Lowered music volume

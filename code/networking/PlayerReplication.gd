@@ -1,4 +1,5 @@
 extends Node2D
+signal health_changed
 
 slave func setPosition(pos):
 	position = pos
@@ -12,3 +13,5 @@ func updateNetworkPosition(pos):
 		rpc_unreliable("setPosition", pos)
 	
 
+func emit_health_changed():
+	emit_signal("health_changed")

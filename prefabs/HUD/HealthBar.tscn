@@ -61,3 +61,6 @@ custom_fonts/font = SubResource( 2 )
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 4 )
 value = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
