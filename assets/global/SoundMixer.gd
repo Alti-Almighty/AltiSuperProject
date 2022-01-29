@@ -15,7 +15,7 @@ var _player_voices = []
 var music_player = null
 
 enum {CHILL_MUSIC, FIGHT_MUSIC}
-enum {PLAYER_COUGH, PLAYER_RUN, PLAYER_WALK, PLAYER_SPRAY, PLAYER_SHUFFLE, PLAYER_DEATH, PLAYER_SHOT}
+enum {PLAYER_GRUNT, PLAYER_RUN, PLAYER_WALK, PLAYER_SPRAY, PLAYER_SHUFFLE, PLAYER_DEATH, PLAYER_SHOT, PLAYER_COUGH, PLAYER_HEAVY_COUGH}
 
 export(int) var music_volume = 0
 onready var tween_out = get_node("GlobalMixerTweenOut")
@@ -42,6 +42,8 @@ func _loadVoices():
 	_player_voices.append(load("res://assets/sounds/other/szuranie.wav"))
 	_player_voices.append(load("res://assets/sounds/other/smierc.wav"))
 	_player_voices.append(load("res://assets/sounds/other/shot.mp3"))
+	_player_voices.append(load("res://assets/sounds/other/kaszel.wav"))
+	_player_voices.append(load("res://assets/sounds/other/kaszel_mocny.wav"))
 	
 #Gets voice sound
 func getVoiceSound(voiceIndex):
@@ -49,11 +51,13 @@ func getVoiceSound(voiceIndex):
 		
 func playChill():
 	$GlobalMixer.stream = _music[CHILL_MUSIC]
+	#TODO: there must be easier/proper way of changing volume
+	$GlobalMixer.volume_db = -6
 	$GlobalMixer.play()
 	
 func playWar():	
 	$GlobalMixer.stream = _music[FIGHT_MUSIC]
-	$GlobalMixer.play()
+	#$GlobalMixer.play()
 
 ####
 # FADE IN AND OUT 

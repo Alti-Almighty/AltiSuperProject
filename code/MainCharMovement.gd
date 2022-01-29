@@ -1,8 +1,12 @@
 extends KinematicBody2D
-
+const MAX_HEALTH = 100
+const NORMAL_SPEED = 200
+const COVID_SPEED = NORMAL_SPEED*0.65
 const Projectile = preload("res://Projectile.tscn")
 export (int) var speed = 200
 export (int) var boost = 300
+var health = MAX_HEALTH
+var covid = false
 
 onready var _mixers = [
 	get_parent().get_node("Sound/PlayerMixer"),
@@ -75,3 +79,42 @@ func _play_sound(index, mix = 0):
 	var mixer = _mixers[mix]
 	mixer.stream = SoundMixer.getVoiceSound(index)
 	mixer.play()
+
+func omicron_picked_up():
+	remove_health(10)
+	make_ill()
+	
+func syringe_picked_up():
+	add_health(10)
+
+func mask_picked_up():
+	_play_sound(SoundMixer.PLAYER_SHUFFLE,  MIXER_1)
+	print("mask picked up")
+	cure()
+	
+func make_ill():
+	covid = true
+	speed = COVID_SPEED
+	
+func cure():
+	covid = false
+	speed = NORMAL_SPEED
+
+func add_health(hp):
+	cure()
+	health = max(MAX_HEALTH, health+hp)
+	_play_sound(SoundMixer.PLAYER_GRUNT,  MIXER_1)
+	
+func remove_health(hp):
+	health = max(0, health-hp)
+	if(health > MAX_HEALTH/2):
+		_play_sound(SoundMixer.PLAYER_COUGH,  MIXER_1)
+	else:
+		if health == 0:
+			die()
+		_play_sound(SoundMixer.PLAYER_HEAVY_COUGH,  MIXER_1)
+	
+func die():
+	_play_sound(SoundMixer.PLAYER_DIE,  MIXER_1)
+	print("die")
+

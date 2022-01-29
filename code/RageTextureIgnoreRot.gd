@@ -12,7 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var camera_position = $"../KinematicBody2D".position
+	var camera_position = $"../PlayerKinematicBody2D".position
 	camera_position.x -= get_viewport_rect().size.x/2
 	camera_position.y -= get_viewport_rect().size.y/2
 	self.set_position(camera_position)

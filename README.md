@@ -1,5 +1,8 @@
 # AltiSuperProject
-
+# Commit 29/01 @Jakub
+* Pickups are now altering hp (will power bar not yet changed) and illness state (makes you walk slow)
+* Added sound to pickups and death
+* Lowered music volume
 # Commits 27/01 @PawelBis
 Added lobby system and replicated movement.
 If you want to test this on your local computer:
