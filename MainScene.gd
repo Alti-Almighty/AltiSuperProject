@@ -10,7 +10,6 @@ func _ready():
 	#$RageTimer.start_timer()
 	$EffectsController.restart()
 	_play_music()
-	$UI/HUD.set_willpower($Player/PlayerKinematicBody2D.MAX_HEALTH)
 	powerup_random_spawn(OmiPowerUp, 10)
 	powerup_random_spawn(SyrPowerUp, 5)
 	powerup_random_spawn(MaskPowerUp, 15)
@@ -32,7 +31,3 @@ func powerup_random_spawn(res: Resource, amount : int):
 		var rand_y = rng.randi_range(32, $TileMap.get_used_rect().size.y * $TileMap.cell_size.y * $TileMap.scale.y )
 		ins.transform.origin = Vector2(rand_x, rand_y)
 		add_child(ins)
-
-
-func _on_Player_health_changed():
-	$UI/HUD.set_willpower($Player/PlayerKinematicBody2D.health)

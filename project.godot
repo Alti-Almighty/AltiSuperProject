@@ -8,10 +8,20 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://code/networking/PlayerReplication.gd"
+} ]
+_global_script_class_icons={
+"Player": ""
+}
+
 [application]
 
 config/name="AltimetrikSuperProject"
-run/main_scene="res://MainScene.tscn"
+run/main_scene="res://scenes/Lobby.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -8,7 +8,7 @@ func _ready():
 func _player_connected(id):
 	print("Player " + str(id) + " connected to server!")
 	Session.player_ids.push_back(id)
-	var game = preload("res://scenes/Game.tscn").instance()
+	var game = preload("res://MainScene.tscn").instance()
 	game.set_name("Game")
 	get_tree().get_root().add_child(game)
 

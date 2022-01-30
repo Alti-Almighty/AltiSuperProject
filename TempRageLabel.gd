@@ -17,10 +17,13 @@ func _ready():
 
 
 func _on_Node2D_timeout():
+	print(get_parent().name)
 	if self.is_visible():
 		self.hide()
-		get_node("../../Player/RageTexture").hide()
+		for player in Session.players:
+			player.set_rage(false)
 	else:
 		self.show()
-		get_node("../../Player/RageTexture").show()
+		for player in Session.players:
+			player.set_rage(true)
 	var a = get_node("../Timer").start(3)

@@ -43,3 +43,6 @@ custom_colors/font_outline_modulate = Color( 0.709804, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "RAGE"
+__meta__ = {
+"_edit_use_anchors_": false
+}

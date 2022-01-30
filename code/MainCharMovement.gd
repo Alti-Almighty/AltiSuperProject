@@ -46,16 +46,16 @@ func get_input():
 		_boosted = false
 		velocity = velocity.normalized() * speed
 	if Input.is_action_just_pressed("Shoot"):
-		shoot()
+		rpc_unreliable("shoot")
 
 func _physics_process(delta):
 	# Process input only if we are network master of this player	
-
 	if not Session.is_multi or is_network_master():
 		get_input()
 		velocity = move_and_slide(velocity)
-		get_parent().updateNetworkPosition(position)				
 		look_at(get_global_mouse_position())
+		get_parent().updateNetworkRotation(rotation)
+		get_parent().updateNetworkPosition(position)
 
 func _input(event):
 	if event is InputEventMouseButton:   #position we need for projectile to travel
@@ -65,14 +65,19 @@ func _input(event):
 		pass
 		#print("Mouse Motion at: ", get_viewport().get_mouse_position() )
 
-func shoot():
+
+sync func shoot():
 	var projectile_instance = Projectile.instance()
-	owner.add_child(projectile_instance)
+	projectile_instance.spawning_player = self
+	projectile_instance.set_network_master(get_network_master())
+	get_tree().get_root().add_child(projectile_instance)
+	
 	var projectile_spawn_position = self.transform
+	if not is_network_master():
+		projectile_spawn_position = get_parent().transform
 	projectile_instance.transform = projectile_spawn_position
 	_play_sound(SoundMixer.PLAYER_SHOT,  MIXER_1)
-	
-	$Camera2D.shake(0.2,15,8)
+
 
 # Helpers
 func _play_sound(index, mix = 0):
@@ -80,12 +85,18 @@ func _play_sound(index, mix = 0):
 	mixer.stream = SoundMixer.getVoiceSound(index)
 	mixer.play()
 
+func deal_damage(amount):
+	if is_network_master():
+		rpc("remove_health", amount)
+
 func omicron_picked_up():
-	remove_health(10)
+	rpc("remove_health", 10)
+	get_parent().get_node("UI/HUD").set_willpower(health)
 	make_ill()
 	
 func syringe_picked_up():
-	add_health(10)
+	rpc("add_health", 10)
+	get_parent().get_node("UI/HUD").set_willpower(health)
 
 func mask_picked_up():
 	_play_sound(SoundMixer.PLAYER_SHUFFLE,  MIXER_1)
@@ -100,23 +111,24 @@ func cure():
 	covid = false
 	speed = NORMAL_SPEED
 
-func add_health(hp):
+sync func add_health(hp):
 	cure()
 	health = max(MAX_HEALTH, health+hp)
 	_play_sound(SoundMixer.PLAYER_GRUNT,  MIXER_1)
-	get_parent().emit_health_changed()
 	
-func remove_health(hp):
+sync func remove_health(hp):
 	health = max(0, health-hp)
 	if(health > MAX_HEALTH/2):
 		_play_sound(SoundMixer.PLAYER_COUGH,  MIXER_1)
 	else:
 		if health == 0:
-			die()
+			rpc("die")
 		_play_sound(SoundMixer.PLAYER_HEAVY_COUGH,  MIXER_1)
-	get_parent().emit_health_changed()
+	print("Removing " + str(hp) + "hp, remaining: " +  str(health))
 	
-func die():
-	_play_sound(SoundMixer.PLAYER_DIE,  MIXER_1)
+sync func die():
+	#_play_sound(SoundMixer.PLAYER_DIE,  MIXER_1)
 	print("die")
+	# Yeeees, I know, beautifull :D
+	get_parent().get_parent().remove_child(get_parent())
 
